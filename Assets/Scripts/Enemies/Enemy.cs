@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision!");
 
         //Upon reaching the exit, we must 
         if (collision.gameObject.CompareTag("EnemyExit"))

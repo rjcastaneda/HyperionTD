@@ -21,33 +21,33 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        //Initializing objects.
+       //Initializing objects.
        enemyT = this.gameObject.GetComponent<Transform>();
        theWaypoints = GameObject.Find("EnemyWaypoints").GetComponent<Transform>();
-        _enemy = this.gameObject.GetComponent<Enemy>();
-        foreach (Transform child in theWaypoints)
-        {
-            waypoints.Add(child);
-        }
+       _enemy = this.gameObject.GetComponent<Enemy>();
+       foreach (Transform child in theWaypoints)
+       {
+           waypoints.Add(child);
+       }
 
-        //setting defaults
-        wpIndex = 0;
-        waypoint = waypoints[wpIndex];
-        isMoving = true;
-        distanceThreshold = .2f;
+       //setting defaults
+       wpIndex = 0;
+       waypoint = waypoints[wpIndex];
+       isMoving = true;
+       distanceThreshold = .2f;
     }
 
     private void Update()
     {
-        if(isMoving) 
-        { 
+        if(isMoving && wpIndex < waypoints.Count)
+        {
+            waypoint = waypoints[wpIndex];
             MoveToWaypoint(); 
         }
 
         if(!isMoving)
         {
             wpIndex++;
-            waypoint = waypoints[wpIndex];
             isMoving = true;
         }
     }
