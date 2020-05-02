@@ -1,0 +1,104 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawnSystem : MonoBehaviour
+{
+    [System.Serializable]
+    public class Wave
+    {
+        public string waveName;
+        public GameObject enemy;
+        public bool isBoss;
+        public int numEnemies;
+        public float spawnRate;
+    }
+
+    public bool isWaiting;
+    public bool isSpawning;
+    public byte waveIndex;
+    public long currentWave;
+    public Wave[] waves;
+    public Transform[] spawnPoints;
+
+    public float checkInterval;
+    public float waveTime;
+    
+    private void Awake()
+    {
+        //Set defaults.
+        waveIndex = 0;
+        currentWave = 0;
+        checkInterval = 2f;
+        waveTime = 45f;
+        isWaiting = false;
+        isSpawning = true;
+    }
+
+    private void Update()
+    {
+        if (isWaiting)
+        {
+            if (!EnemyAlive())
+            {
+                if (waveTime <= 0)
+                {
+                    isSpawning = true;
+                    isWaiting = false;
+                    return;
+                }
+                waveTime -= Time.deltaTime;
+            }
+            
+            else
+            {
+                return;
+            }
+        }
+
+        if(isSpawning)
+        {
+            StartCoroutine(SpawnWave(waves[waveIndex]));
+            isSpawning = false;
+        }
+    }
+
+    public bool EnemyAlive()
+    {
+        //We check if enemies are alive at an interval to reduce stress on the engine.
+        checkInterval -= Time.deltaTime;
+        if( checkInterval <= 0f)
+        {
+            checkInterval = 2f;
+            if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            {
+                if(waveIndex > waves.Length){ waveIndex = 0; } else { waveIndex++; }
+                currentWave++;
+                waveTime = 45f; 
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+     IEnumerator SpawnWave(Wave toSpawn)
+    {
+        //For loop to spawn enemies a number of times, given the size of the wave.
+        for(int x = 0; x < toSpawn.numEnemies; x++)
+        {
+            SpawnEnemy(toSpawn.enemy);
+            yield return new WaitForSeconds(1f/toSpawn.spawnRate);
+        }
+
+        isWaiting = true;
+        yield break;
+    }
+
+    void SpawnEnemy(GameObject enemy)
+    {
+        int rndIndex = Random.Range(0, spawnPoints.Length);
+        Instantiate(enemy, spawnPoints[rndIndex].transform.position, spawnPoints[rndIndex].transform.rotation);
+    }
+}

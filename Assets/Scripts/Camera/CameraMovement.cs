@@ -21,6 +21,11 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        DirectionalMove();
+        CamZoom();
+    }
+    private void DirectionalMove()
+    {
         //Directional Camera Movement
         if (Input.GetKey(KeyCode.W))
         {
@@ -29,7 +34,7 @@ public class CameraMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(new Vector3(0, 0 , -panSpeed * Time.deltaTime), Space.World);
+            transform.Translate(new Vector3(0, 0, -panSpeed * Time.deltaTime), Space.World);
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -41,18 +46,19 @@ public class CameraMovement : MonoBehaviour
         {
             transform.Translate(new Vector3(panSpeed * Time.deltaTime, 0, 0), Space.World);
         }
-
-    //ScrollWheel Camera Zoom
+    }
+    private void CamZoom()
+    {
+        //ScrollWheel Camera Zoom
         camPos = transform.position;
         zoom = Input.GetAxis("Mouse ScrollWheel");
-        camPos.y -= zoom * 500 * zoomSpeed * Time.deltaTime;
+        camPos.y -= zoom * 100 * zoomSpeed * Time.deltaTime;
         transform.position = camPos;
     }
-
     void LateUpdate()
     {
         //Camera Bounds
-            transform.position = new Vector3(
+        transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, minX, maxX),
             Mathf.Clamp(transform.position.y, minY, maxY),
             Mathf.Clamp(transform.position.z, minZ, maxZ));
