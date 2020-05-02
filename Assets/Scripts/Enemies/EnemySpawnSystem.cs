@@ -16,6 +16,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     public bool isWaiting;
     public bool isSpawning;
+    public bool waveTimer;
     public byte waveIndex;
     public long currentWave;
     public Wave[] waves;
@@ -29,27 +30,37 @@ public class EnemySpawnSystem : MonoBehaviour
         //Set defaults.
         waveIndex = 0;
         currentWave = 0;
-        checkInterval = 2f;
-        waveTime = 45f;
+        checkInterval = 5f;
+        waveTime = 1f;
+
+        waveTimer = true;
         isWaiting = false;
-        isSpawning = true;
+        isSpawning = false;
     }
 
     private void Update()
     {
+        if(waveTimer && waveTime <= 0)
+        {
+            currentWave++;
+            isSpawning = true;
+            waveTimer = false;
+        }
+        else if(waveTimer)
+        {
+            waveTime -= Time.deltaTime;
+            return;
+        }
+
         if (isWaiting)
         {
             if (!EnemyAlive())
             {
-                if (waveTime <= 0)
-                {
-                    isSpawning = true;
-                    isWaiting = false;
-                    return;
-                }
-                waveTime -= Time.deltaTime;
+                waveTime = 1f;
+                waveTimer = true;
+                isWaiting = false;
+                return;
             }
-            
             else
             {
                 return;
@@ -69,13 +80,10 @@ public class EnemySpawnSystem : MonoBehaviour
         checkInterval -= Time.deltaTime;
         if( checkInterval <= 0f)
         {
-            checkInterval = 2f;
+            checkInterval = 5f;
             if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
-                if(waveIndex > waves.Length){ waveIndex = 0; } else { waveIndex++; }
-                currentWave++;
-                waveTime = 45f; 
-
+                if(waveIndex == waves.Length - 1){ waveIndex = 0; } else { waveIndex++; }
                 return false;
             }
         }
