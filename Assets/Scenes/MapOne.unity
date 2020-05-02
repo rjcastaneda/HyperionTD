@@ -4138,7 +4138,7 @@ Transform:
   m_LocalScale: {x: 0.24999996, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &608387953
 BoxCollider:
@@ -14982,7 +14982,7 @@ Transform:
   m_LocalScale: {x: 0.24999996, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1807469777
 PrefabInstance:
@@ -15246,7 +15246,7 @@ Transform:
   - {fileID: 1114258458}
   - {fileID: 1145201405}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1835088923
 GameObject:
