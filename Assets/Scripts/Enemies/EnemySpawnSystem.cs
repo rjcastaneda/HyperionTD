@@ -17,6 +17,7 @@ public class EnemySpawnSystem : MonoBehaviour
     public bool isWaiting;
     public bool isSpawning;
     public bool waveTimer;
+
     public byte waveIndex;
     public long currentWave;
     public Wave[] waves;

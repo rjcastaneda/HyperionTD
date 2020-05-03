@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class BuildSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int playerMoney;
+
+    private GameObject selectedTurret;
+    private GameObject machineGunTurret;
+    private GameObject sniperTurret;
+    private GameObject flameTurret;
+
+    private void Start()
     {
-        
+        machineGunTurret = Resources.Load<GameObject>("Turrets/MGT");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject SelectTurret() { return selectedTurret; }
+    public void SelMGT() { selectedTurret = machineGunTurret; }
+    public void SelST() { selectedTurret = sniperTurret; }
+    public void SelFT() { selectedTurret = flameTurret; }
 }

@@ -6948,7 +6948,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 937142836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1109149596}
+        m_MethodName: SelMGT
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &937142836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8802,6 +8813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109149594}
   - component: {fileID: 1109149595}
+  - component: {fileID: 1109149596}
   m_Layer: 0
   m_Name: UniversalManager
   m_TagString: Untagged
@@ -8846,10 +8858,28 @@ MonoBehaviour:
     isBoss: 0
     numEnemies: 5
     spawnRate: 1
+  - waveName: BasicEnemy
+    enemy: {fileID: 4064757178521670522, guid: 1207de18f0ec7b94889523bce0e1e692, type: 3}
+    isBoss: 0
+    numEnemies: 20
+    spawnRate: 3
   spawnPoints:
   - {fileID: 1805877799}
   checkInterval: 0
   waveTime: 0
+--- !u!114 &1109149596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109149593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b215446d5ed6f4885d64b4bc124d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMoney: 9000000
 --- !u!1 &1114258457
 GameObject:
   m_ObjectHideFlags: 0
