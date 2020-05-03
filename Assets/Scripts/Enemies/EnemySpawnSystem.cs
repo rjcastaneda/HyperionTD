@@ -14,25 +14,29 @@ public class EnemySpawnSystem : MonoBehaviour
         public float spawnRate;
     }
 
+    [Header("System Objects")]
+    public Wave[] waves;
+    public Transform[] spawnPoints;
+
+    [Header("System States")]
     public bool isWaiting;
     public bool isSpawning;
     public bool waveTimer;
 
+    [Header("System Values")]
     public byte waveIndex;
     public long currentWave;
-    public Wave[] waves;
-    public Transform[] spawnPoints;
-
-    public float checkInterval;
+    public float timeBeforeNextWave;
     public float waveTime;
-    
+    public float checkInterval;
+
     private void Awake()
     {
         //Set defaults.
         waveIndex = 0;
         currentWave = 0;
         checkInterval = 5f;
-        waveTime = 1f;
+        waveTime = timeBeforeNextWave;
 
         waveTimer = true;
         isWaiting = false;
@@ -57,7 +61,7 @@ public class EnemySpawnSystem : MonoBehaviour
         {
             if (!EnemyAlive())
             {
-                waveTime = 1f;
+                waveTime = timeBeforeNextWave;
                 waveTimer = true;
                 isWaiting = false;
                 return;

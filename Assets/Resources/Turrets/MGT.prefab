@@ -414,4 +414,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: MGT
   cost: 200
+  range: 2
   fireRate: 25
+  target: {fileID: 0}

@@ -8847,11 +8847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc88c3c74cab0243b0438528d525116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWaiting: 0
-  isSpawning: 0
-  waveTimer: 0
-  waveIndex: 0
-  currentWave: 0
   waves:
   - waveName: BasicEnemy
     enemy: {fileID: 4064757178521670522, guid: 1207de18f0ec7b94889523bce0e1e692, type: 3}
@@ -8865,8 +8860,14 @@ MonoBehaviour:
     spawnRate: 3
   spawnPoints:
   - {fileID: 1805877799}
-  checkInterval: 0
+  isWaiting: 0
+  isSpawning: 0
+  waveTimer: 0
+  waveIndex: 0
+  currentWave: 0
+  timeBeforeNextWave: 30
   waveTime: 0
+  checkInterval: 0
 --- !u!114 &1109149596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8879,7 +8880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b215446d5ed6f4885d64b4bc124d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoney: 9000000
+  playerMoney: 2000
 --- !u!1 &1114258457
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildSquare : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class BuildSquare : MonoBehaviour
 
     void OnMouseDown()
     {
+        //Prevent clicking when UI over object.
+        if (EventSystem.current.IsPointerOverGameObject()) 
+        {
+            Debug.Log("Clicking on UI");
+            return; 
+        }
+
         int turretCost;
 
         if(turret != null)
@@ -40,6 +48,7 @@ public class BuildSquare : MonoBehaviour
         }
 
         turret = (GameObject)Instantiate(selTurret, transform.position, transform.rotation);
+        _buildSystem.playerMoney -= turretCost;
         
     }
 
