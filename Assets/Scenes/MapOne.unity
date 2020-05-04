@@ -4894,7 +4894,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 293.53073, y: 50}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689721179
 MonoBehaviour:
@@ -4950,7 +4950,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -8851,13 +8851,13 @@ MonoBehaviour:
   - waveName: BasicEnemy
     enemy: {fileID: 4064757178521670522, guid: 1207de18f0ec7b94889523bce0e1e692, type: 3}
     isBoss: 0
-    numEnemies: 5
-    spawnRate: 1
+    numEnemies: 25
+    spawnRate: 5
   - waveName: BasicEnemy
     enemy: {fileID: 4064757178521670522, guid: 1207de18f0ec7b94889523bce0e1e692, type: 3}
     isBoss: 0
     numEnemies: 20
-    spawnRate: 3
+    spawnRate: 0.25
   spawnPoints:
   - {fileID: 1805877799}
   isWaiting: 0
@@ -8865,7 +8865,7 @@ MonoBehaviour:
   waveTimer: 0
   waveIndex: 0
   currentWave: 0
-  timeBeforeNextWave: 30
+  timeBeforeNextWave: 3
   waveTime: 0
   checkInterval: 0
 --- !u!114 &1109149596
@@ -17635,6 +17635,7 @@ GameObject:
   - component: {fileID: 2076843601}
   - component: {fileID: 2076843600}
   - component: {fileID: 2076843604}
+  - component: {fileID: 2076843605}
   m_Layer: 5
   m_Name: InGameUI
   m_TagString: Untagged
@@ -17739,6 +17740,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b056629f1547ea45a606b8a976a305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthTextGO: {fileID: 689721177}
+  bankTextGO: {fileID: 1235891181}
+  wavesTextGO: {fileID: 1024838791}
+--- !u!222 &2076843605
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076843599}
+  m_CullTransparentMesh: 0
 --- !u!1 &2084715176
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
 
     private void Death()
     {
