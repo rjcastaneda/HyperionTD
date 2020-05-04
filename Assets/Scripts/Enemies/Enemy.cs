@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float scaleFactor;
     public int enemyScore;
+    public int bounty;
 
     private EnemySpawnSystem spawnSystem;
+    private BuildSystem _buildSystem;
     private Player _player;
 
     private void Awake()
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
         spawnSystem = GameObject.Find("UniversalManager").GetComponent<EnemySpawnSystem>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         health *= (scaleFactor * spawnSystem.currentWave);
+        _buildSystem = GameObject.Find("UniversalManager").GetComponent<BuildSystem>();
     }
 
     private void Update()
@@ -46,6 +49,7 @@ public class Enemy : MonoBehaviour
     private void Death()
     {
         _player.score += enemyScore;
+        _buildSystem.playerMoney += bounty;
         Destroy(this.gameObject); 
     }
 }

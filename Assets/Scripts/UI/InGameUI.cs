@@ -15,11 +15,13 @@ public class InGameUI : MonoBehaviour
     private TextMeshProUGUI healthText;
     private TextMeshProUGUI bankText;
     private TextMeshProUGUI wavesText;
+    private TextMeshProUGUI scoreText;
 
     [Header("Texts")]
     public GameObject healthTextGO;
     public GameObject bankTextGO;
     public GameObject wavesTextGO;
+    public GameObject scoreTextGO;
 
     public void Start()
     {
@@ -31,6 +33,7 @@ public class InGameUI : MonoBehaviour
         healthText = healthTextGO.GetComponent<TextMeshProUGUI>();
         bankText = bankTextGO.GetComponent<TextMeshProUGUI>();
         wavesText = wavesTextGO.GetComponent<TextMeshProUGUI>();
+        scoreText = scoreTextGO.GetComponent<TextMeshProUGUI>();
     }
 
     public void Update()
@@ -38,6 +41,7 @@ public class InGameUI : MonoBehaviour
         UpdateHealth();
         UpdateBank();
         UpdateWaves();
+        UpdateScore();
     }
 
     private void UpdateHealth()
@@ -48,6 +52,11 @@ public class InGameUI : MonoBehaviour
     private void UpdateBank()
     {
         bankText.text = "Bank: $" + _buildSystem.playerMoney.ToString();
+    }
+
+    private void UpdateScore()
+    {
+        scoreText.text = "Score: " + _player.score.ToString("D12");
     }
 
     private void UpdateWaves()

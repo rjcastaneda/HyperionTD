@@ -18,7 +18,7 @@ public class Turret : MonoBehaviour
 
     public List<GameObject> enemiesInRange;
     private GameObject turretHead;
-    private SphereCollider rangeCollider;
+    public SphereCollider rangeCollider;
 
     private void Start()
     {
@@ -30,7 +30,9 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         rangeCollider.radius = range;
-        if(targetTrans == null){ return; }
+        if(targetTrans == null){
+            enemiesInRange.Remove(target);
+            return; }
         RotateTurret();
     }
 
