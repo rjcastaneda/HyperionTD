@@ -510,9 +510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: MGT
   cost: 200
-  damage: 15
+  damage: 25
   range: 3
-  fireRate: 0.25
+  fireRate: 5
   distanceToT: 0
   target: {fileID: 0}
   targetTrans: {fileID: 0}

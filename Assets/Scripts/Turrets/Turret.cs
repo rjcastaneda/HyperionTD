@@ -58,12 +58,14 @@ public class Turret : MonoBehaviour
         byte FIRST_ENEMY = 0;
         if(enemiesInRange.Count == 0){ return; }
         target = enemiesInRange[FIRST_ENEMY];
-        targetTrans = target.transform;
+        if(target != null)
+        {
+            targetTrans = target.transform;
+        }  
     }
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Trigger Detected");
         if (col.gameObject.CompareTag("Enemy"))
         {
             enemiesInRange.Add(col.gameObject);
@@ -73,7 +75,6 @@ public class Turret : MonoBehaviour
 
     void OnCollisionExit(Collision col)
     {
-        Debug.Log("Trigger Exit Detected");
         if (ReferenceEquals(target, col.gameObject))
         {
             target = null;

@@ -19,17 +19,17 @@ public class TurretShoot : MonoBehaviour
 
     private void Update()
     {
-        Shoot();
+        if(nextFire <= 0f)
+        {
+            Shoot();
+            nextFire = 1f / _turret.fireRate;
+        }
+        nextFire -= Time.deltaTime;
     }
 
     private void Shoot()
     {
         if(_turret.targetTrans == null){ return; }
-
-        if(Time.time > nextFire)
-        {
-            nextFire = Time.time + _turret.fireRate;
-        }
 
         GameObject bullet = Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().Seek(_turret.targetTrans);

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float bDamage;
     public bool isAoe;
     public Transform seekTarget;
-    public float bSpeed = 30f;
+    public float bSpeed = 15f;
 
 
     private void Update()
@@ -28,11 +28,15 @@ public class Bullet : MonoBehaviour
     {
         seekTarget = targetTrans;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(bDamage);
+            Destroy(this.gameObject);
+        }
+        if(collision.gameObject.CompareTag("Ground"))
+        {
             Destroy(this.gameObject);
         }
     }

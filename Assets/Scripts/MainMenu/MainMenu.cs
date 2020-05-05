@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    Button startButton;
-    Button HTPButton;
-    Button exitButton;
-
-    void Start()
+    public void StartGame()
     {
-        startButton = GameObject.Find("StartButton").GetComponent<Button>();
-        exitButton = GameObject.Find("ExitButton").GetComponent<Button>();
-        HTPButton = GameObject.Find("HTPButton").GetComponent<Button>();
+        SceneManager.LoadScene("MapOne");
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Game has Quit!");
+        Application.Quit();
     }
 }

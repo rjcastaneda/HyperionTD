@@ -130,6 +130,7 @@ MonoBehaviour:
   moveSpeed: 3
   scaleFactor: 0.25
   enemyScore: 100
+  bounty: 25
 --- !u!114 &4087793976056405263
 MonoBehaviour:
   m_ObjectHideFlags: 0
