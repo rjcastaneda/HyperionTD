@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    private GameObject turretHead;
+
     [Header("Turret Attributes")]
     public string type;
     public int cost;
+    public int Level;
     public float damage;
     public float range;
     public float fireRate;
-    public float distanceToT;
+    public float upgradeCost;
+    public float sellValue;
 
     [Header("Target")]
     public GameObject target;
     public Transform targetTrans;
-
     public List<GameObject> enemiesInRange;
-    private GameObject turretHead;
     public SphereCollider rangeCollider;
 
     private void Start()
@@ -30,9 +32,12 @@ public class Turret : MonoBehaviour
     private void Update()
     {
         rangeCollider.radius = range;
-        if(targetTrans == null){
+        if(targetTrans == null)
+        {
             enemiesInRange.Remove(target);
-            return; }
+            return; 
+        }
+
         RotateTurret();
     }
 
@@ -56,8 +61,14 @@ public class Turret : MonoBehaviour
     private void Targetting()
     {
         byte FIRST_ENEMY = 0;
-        if(enemiesInRange.Count == 0){ return; }
+
+        if(enemiesInRange.Count == 0)
+        { 
+            return; 
+        }
+
         target = enemiesInRange[FIRST_ENEMY];
+
         if(target != null)
         {
             targetTrans = target.transform;

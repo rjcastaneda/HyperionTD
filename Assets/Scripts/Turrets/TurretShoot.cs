@@ -34,24 +34,5 @@ public class TurretShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Bullet>().Seek(_turret.targetTrans);
         bullet.GetComponent<Bullet>().bDamage = _turret.damage;
-
-        /*
-        RaycastHit hit;
-        float ogR = _turret.rangeCollider.radius;
-        _turret.rangeCollider.radius = 0f;
-        int turretLayer = ~(1 << 10);
-        if (Physics.Raycast(firePoint.position, _turret.targetTrans.position, out hit, Mathf.Infinity, turretLayer))
-        {
-            Debug.DrawLine(firePoint.position, hit.point, Color.red);
-            Debug.Log(hit.collider.gameObject.name);
-            if (hit.transform.CompareTag("Enemy"))
-            {
-                Debug.Log("Hit Enemy");
-                hit.collider.GetComponent<Enemy>().TakeDamage(_turret.damage);
-            }
-        }
-        
-        _turret.rangeCollider.radius = ogR;
-        */
     }
 }

@@ -5,15 +5,18 @@ using UnityEngine.EventSystems;
 
 public class BuildSquare : MonoBehaviour
 {
+    private BuildSystem _buildSystem;
+    private Renderer thisRend;
+    private GameObject turret;
+    private GameObject selTurret;
+
+    [Header("Turret on Square")]
+    public Turret turretInfo;
+
+    [Header("Square State Colors")]
     public Color onHover;
     public Color startColor;
 
-    private BuildSystem _buildSystem;
-    private Renderer thisRend;
-
-    private GameObject turret;
-    private GameObject selTurret;
-    private GameObject hologram;
     private void Start()
     {
         thisRend = this.gameObject.GetComponent<Renderer>();
@@ -23,6 +26,10 @@ public class BuildSquare : MonoBehaviour
 
     void OnMouseDown()
     {
+        int turretCost;
+        float offset = .1f;
+        
+
         //Prevent clicking when UI over object.
         if (EventSystem.current.IsPointerOverGameObject()) 
         {
@@ -30,11 +37,9 @@ public class BuildSquare : MonoBehaviour
             return; 
         }
 
-        int turretCost;
-
         if(turret != null)
-        { 
-            Debug.Log("Can't build here");
+        {
+            _buildSystem.SelectSquare(this);
             return; 
         }
 
@@ -47,7 +52,9 @@ public class BuildSquare : MonoBehaviour
             return;
         }
 
-        turret = (GameObject)Instantiate(selTurret, transform.position, transform.rotation);
+        Vector3 offsetPos= new Vector3(transform.position.x,transform.position.y + offset,transform.position.z);
+        turret = (GameObject)Instantiate(selTurret, offsetPos, transform.rotation);
+        turretInfo = turret.GetComponent<Turret>();
         _buildSystem.playerMoney -= turretCost;
         
     }
