@@ -14,36 +14,75 @@ using TMPro;
 
 public class TurretInfoPanel : MonoBehaviour
 {
-    private BuildSquare targetSquare;
     private Turret targetTurret;
 
-    //TurretInfoPanel UI Elements
+    [Header("TurretInfoPanel UI Elements")]
     private Button upgradeButton;
     private Button sellButton;
-    private TextMeshProUGUI upgradeCost;
-    private TextMeshProUGUI sellCost;
+    public TextMeshProUGUI turretLevel;
+    public TextMeshProUGUI turretDamage;
+    public TextMeshProUGUI turretFireRate;
+    public TextMeshProUGUI turretRange;
+    public TextMeshProUGUI upgradeCost;
+    public TextMeshProUGUI sellCost;
 
-    public void Start()
+    private void Start()
     {
-        upgradeButton = transform.Find("UpgradeButton").GetComponent<Button>();
-        sellButton = transform.Find("SellButton").GetComponent<Button>();
-        upgradeCost = transform.Find("UpgradeButton").transform.Find("Cost (TMP)").GetComponent<TextMeshProUGUI>();
-        sellCost = transform.Find("SellButton").transform.Find("Cost (TMP)").GetComponent<TextMeshProUGUI>();
+        upgradeButton = this.transform.Find("UpgradeButton").GetComponent<Button>();
+        sellButton = this.transform.Find("SellButton").GetComponent<Button>();
+        NoSelection();
     }
 
-    public void setTarget (BuildSquare square)
+    public void Update()
     {
-        targetSquare = square;
-        targetTurret = targetSquare.turretInfo;
+        UpdateInfo();
     }
 
+    public void UpdateInfo()
+    {
+        if(targetTurret == null){ return; }
+        turretLevel.text = targetTurret.level.ToString();
+        turretDamage.text = targetTurret.damage.ToString();
+        turretRange.text = targetTurret.range.ToString();
+        turretFireRate.text = targetTurret.fireRate.ToString();
+        upgradeCost.text = "$" + targetTurret.upgradeCost.ToString();
+        sellCost.text = "$" + targetTurret.sellCost.ToString();
+    }
+
+     public void UpgradeButton()
+     {
+        targetTurret.Upgrade();
+     }
+
+    public void SellButton()
+    {
+        targetTurret.Sell();
+    }
+
+    public void setTarget (Turret _turret)
+    {
+        targetTurret = _turret;
+    }
+
+    public void OnSelection()
+    {
+        upgradeButton.interactable = true;
+        sellButton.interactable = true;
+        upgradeCost.text = "$" + targetTurret.upgradeCost.ToString();
+        sellCost.text = "$" + targetTurret.sellCost.ToString();
+    }
+
+    //Function for when Deselecting occurs
     public void NoSelection()
     {
-        targetSqaure = null;
         targetTurret = null;
         upgradeButton.interactable = false;
         sellButton.interactable = false;
         upgradeCost.text = "No Selection";
         sellCost.text = "No Selection";
+        turretLevel.text = "0";
+        turretDamage.text = "0";
+        turretRange.text = "0";
+        turretFireRate.text = "0";
     }
 }

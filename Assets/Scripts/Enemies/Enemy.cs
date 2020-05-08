@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private BuildSystem _buildSystem;
     private Player _player;
 
-    private void Awake()
+    private void Start()
     {
         //Difficulty is increased by increasing the health of the enemy.
         //Health is scaled by the current wave and a specified scale factor.
@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        //Upon reaching the exit, we must 
+        //Upon reaching the exit, the enemy is destroyed
+        //and player loses a life.
         if (collision.gameObject.CompareTag("EnemyExit"))
         {
             _player.health -= 1;

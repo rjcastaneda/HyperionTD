@@ -7,11 +7,10 @@ public class BuildSquare : MonoBehaviour
 {
     private BuildSystem _buildSystem;
     private Renderer thisRend;
-    private GameObject turret;
     private GameObject selTurret;
 
-    [Header("Turret on Square")]
-    public Turret turretInfo;
+    [Header("Turret On Square")]
+    public GameObject turret;
 
     [Header("Square State Colors")]
     public Color onHover;
@@ -29,13 +28,8 @@ public class BuildSquare : MonoBehaviour
         int turretCost;
         float offset = .1f;
         
-
         //Prevent clicking when UI over object.
-        if (EventSystem.current.IsPointerOverGameObject()) 
-        {
-            Debug.Log("Clicking on UI");
-            return; 
-        }
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
 
         if(turret != null)
         {
@@ -46,15 +40,10 @@ public class BuildSquare : MonoBehaviour
         selTurret = _buildSystem.SelectTurret();
         turretCost = selTurret.GetComponent<Turret>().cost;
 
-        if(turretCost > _buildSystem.playerMoney)
-        {
-            Debug.Log("Not enough money");
-            return;
-        }
+        if(turretCost > _buildSystem.playerMoney){ return; }
 
         Vector3 offsetPos= new Vector3(transform.position.x,transform.position.y + offset,transform.position.z);
         turret = (GameObject)Instantiate(selTurret, offsetPos, transform.rotation);
-        turretInfo = turret.GetComponent<Turret>();
         _buildSystem.playerMoney -= turretCost;
         
     }
