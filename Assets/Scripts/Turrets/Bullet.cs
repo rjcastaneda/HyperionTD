@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     {
         if(seekTarget == null)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
             return;
         }
 
@@ -33,11 +33,11 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(bDamage);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
         if(collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

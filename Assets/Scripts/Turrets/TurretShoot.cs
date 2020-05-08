@@ -7,13 +7,16 @@ public class TurretShoot : MonoBehaviour
     private Transform firePoint;
     private Turret _turret;  
     private float nextFire;
+    private BulletPoolSystem _bulletPoolSystem;
 
     [Header("Bullet to Fire")]
-    public GameObject bulletPreFab;
+    public string bulletType;
+
 
     private void Start()
     {
         _turret = gameObject.GetComponent<Turret>();
+        _bulletPoolSystem = GameObject.Find("BulletPool").GetComponent<BulletPoolSystem>();
         firePoint = gameObject.transform.Find("Head").transform.Find("FP").GetComponent<Transform>();
     }
 
@@ -31,7 +34,8 @@ public class TurretShoot : MonoBehaviour
     {
         if(_turret.targetTrans == null){ return; }
 
-        GameObject bullet = Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
+        GameObject bullet = _bulletPoolSystem.GetFromPool(bulletType);
+        bullet.transform.position = firePoint.position;
         bullet.GetComponent<Bullet>().Seek(_turret.targetTrans);
         bullet.GetComponent<Bullet>().bDamage = _turret.damage;
     }

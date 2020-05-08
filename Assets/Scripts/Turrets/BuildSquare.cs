@@ -30,13 +30,14 @@ public class BuildSquare : MonoBehaviour
         
         //Prevent clicking when UI over object.
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-
+        
         if(turret != null)
         {
             _buildSystem.SelectSquare(this);
             return; 
         }
 
+        if (_buildSystem.SelectTurret() == null) { return; }
         selTurret = _buildSystem.SelectTurret();
         turretCost = selTurret.GetComponent<Turret>().cost;
 

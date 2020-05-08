@@ -770,7 +770,7 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1262,7 +1262,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &152387051
 PrefabInstance:
@@ -1533,7 +1533,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &226910631
 MonoBehaviour:
@@ -1748,7 +1748,7 @@ Transform:
   - {fileID: 1905841813}
   - {fileID: 1407938625}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279524617
 GameObject:
@@ -5293,7 +5293,7 @@ Transform:
   m_LocalScale: {x: 0.24999996, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &608387953
 BoxCollider:
@@ -5925,7 +5925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 737, y: 491}
+  m_AnchoredPosition: {x: -734, y: 491}
   m_SizeDelta: {x: -1473.1093, y: -982.0727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664544010
@@ -9320,7 +9320,7 @@ Transform:
   - {fileID: 1905731900}
   - {fileID: 1941491525}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &973336183
 PrefabInstance:
@@ -9673,7 +9673,7 @@ Transform:
   m_LocalScale: {x: 23.175386, y: 0.5543824, z: 15.968335}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1012100296
 PrefabInstance:
@@ -11083,7 +11083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1109149595
 MonoBehaviour:
@@ -14879,7 +14879,7 @@ RectTransform:
   - {fileID: 1433797813}
   - {fileID: 468232634}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16813,6 +16813,59 @@ Transform:
   m_Father: {fileID: 1820790158}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1600096709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1600096710}
+  - component: {fileID: 1600096711}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1600096710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600096709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6955234, y: 11.556003, z: -4.787611}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600096711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600096709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa136f237975a242ae8c97122522e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPools:
+  - poolName: MGTBullet
+    bullet: {fileID: 874350372535291354, guid: 7430470929c50284ba2b1786b9dd956b, type: 3}
+    size: 750
+  - poolName: SniperBullet
+    bullet: {fileID: 874350372535291354, guid: 7430470929c50284ba2b1786b9dd956b, type: 3}
+    size: 750
+  - poolName: Missile
+    bullet: {fileID: 874350372535291354, guid: 7430470929c50284ba2b1786b9dd956b, type: 3}
+    size: 750
 --- !u!1001 &1604329581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18638,7 +18691,7 @@ Transform:
   m_LocalScale: {x: 0.24999996, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1807469777
 PrefabInstance:
@@ -18917,7 +18970,7 @@ Transform:
   - {fileID: 1114258458}
   - {fileID: 1145201405}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1835088923
 GameObject:
@@ -22086,7 +22139,7 @@ RectTransform:
   - {fileID: 1024838792}
   - {fileID: 279524618}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

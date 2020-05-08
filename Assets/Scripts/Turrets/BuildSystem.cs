@@ -22,10 +22,7 @@ public class BuildSystem : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1))
-        {
-            _turretInfoPanel.NoSelection();
-        }
+        if(Input.GetMouseButtonDown(1)){ DeselectSquare(); }
     }
 
     public void SelectSquare(BuildSquare square)

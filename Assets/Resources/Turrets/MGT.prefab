@@ -536,8 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957c55cac8ce60245b55ca9bae4e1f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPreFab: {fileID: 874350372535291354, guid: 7430470929c50284ba2b1786b9dd956b,
-    type: 3}
+  bulletType: MGTBullet
 --- !u!120 &6011210774357626712
 LineRenderer:
   m_ObjectHideFlags: 0
