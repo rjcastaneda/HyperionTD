@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour
 {
     private GameObject turretHead;
     private BuildSystem _buildSystem;
-    private Player _player;
+    private GameObject rangeIndicator;
 
     [Header("Turret Attributes")]
     public int level;
@@ -38,8 +38,8 @@ public class Turret : MonoBehaviour
     {
         rangeCollider = transform.Find("Range").gameObject.GetComponent<SphereCollider>();
         turretHead = this.gameObject.transform.Find("Head").gameObject;
-        _player = GameObject.Find("Player").GetComponent<Player>();
         _buildSystem = GameObject.Find("UniversalManager").GetComponent<BuildSystem>();
+        rangeIndicator = _buildSystem.rangeIndicator;
         InvokeRepeating("Targetting", 0, .01f);
 
         //Set Defaults
@@ -88,6 +88,7 @@ public class Turret : MonoBehaviour
             damage += (damage * DAMAGE_SCALE_FACTOR);
             fireRate += (fireRate * FIRERATE_SCALE_FACTOR);
             range += (range * RANGE_SCALE_FACTOR);
+            rangeIndicator.transform.localScale = new Vector3(range * 2, rangeIndicator.transform.localScale.y, range * 2);
             UpdateUpgradeCost();
             UpdateSellCost();
         }
@@ -96,6 +97,7 @@ public class Turret : MonoBehaviour
     public void Sell()
     {
         _buildSystem.playerMoney += sellCost;
+        _buildSystem.DeselectSquare();
         Destroy(this.gameObject);
     }
 

@@ -41,11 +41,20 @@ public class TurretInfoPanel : MonoBehaviour
     public void UpdateInfo()
     {
         if(targetTurret == null){ return; }
-        turretLevel.text = targetTurret.level.ToString();
-        turretDamage.text = targetTurret.damage.ToString();
-        turretRange.text = targetTurret.range.ToString();
-        turretFireRate.text = targetTurret.fireRate.ToString();
-        upgradeCost.text = "$" + targetTurret.upgradeCost.ToString();
+        if(targetTurret.level >= targetTurret.maxLevel)
+        {
+            upgradeCost.text = "MAX UPGRADE";
+            turretLevel.text = "MAX";
+        }
+        else
+        {
+            turretLevel.text = targetTurret.level.ToString("F2");
+            upgradeCost.text = "$" + targetTurret.upgradeCost.ToString();
+        }
+        turretDamage.text = targetTurret.damage.ToString("F2");
+        turretRange.text = targetTurret.range.ToString("F2");
+        turretFireRate.text = targetTurret.fireRate.ToString("F2");
+        
         sellCost.text = "$" + targetTurret.sellCost.ToString();
     }
 

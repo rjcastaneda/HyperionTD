@@ -36,6 +36,7 @@ public class TurretShoot : MonoBehaviour
 
         GameObject bullet = _bulletPoolSystem.GetFromPool(bulletType);
         bullet.transform.position = firePoint.position;
+        bullet.transform.rotation = firePoint.rotation;
         bullet.GetComponent<Bullet>().Seek(_turret.targetTrans);
         bullet.GetComponent<Bullet>().bDamage = _turret.damage;
     }
