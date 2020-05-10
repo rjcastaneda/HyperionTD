@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6417551749926332569}
   m_Layer: 0
   m_Name: SniperTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   targetTrans: {fileID: 0}
   enemiesInRange: []
   rangeCollider: {fileID: 0}
-  DAMAGE_SCALE_FACTOR: 0.5
+  DAMAGE_SCALE_FACTOR: 0.7
   RANGE_SCALE_FACTOR: 0.1
   FIRERATE_SCALE_FACTOR: 0.075
 --- !u!114 &6030115642050657594

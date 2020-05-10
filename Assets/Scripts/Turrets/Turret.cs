@@ -27,8 +27,8 @@ public class Turret : MonoBehaviour
     public SphereCollider rangeCollider;
 
     [Header("Constants")]
-    private const float SELL_ADJUSTMENT = .75F;
-    private const int UPGRADE_ADJUSTMENT = 2;
+    private const float SELL_ADJUSTMENT = .75f;
+    private const float UPGRADE_ADJUSTMENT = 1.5f;
     public float DAMAGE_SCALE_FACTOR;
     public float RANGE_SCALE_FACTOR;
     public float FIRERATE_SCALE_FACTOR;
@@ -66,16 +66,25 @@ public class Turret : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    public void UpdateSellCost()
+    private void UpdateSellCost()
     {
         float newSellCost;
         newSellCost = turretValue * SELL_ADJUSTMENT;
         sellCost = (int)newSellCost;
     }
 
-    public void UpdateUpgradeCost()
+    private void UpdateUpgradeCost()
     {
-        upgradeCost += cost * UPGRADE_ADJUSTMENT;
+        upgradeCost += (int)((float) cost * UPGRADE_ADJUSTMENT);
+    }
+
+    private void UpdateStats()
+    {
+        level++;
+        turretValue += upgradeCost;
+        damage += (damage * DAMAGE_SCALE_FACTOR);
+        fireRate += (fireRate * FIRERATE_SCALE_FACTOR);
+        range += (range * RANGE_SCALE_FACTOR);
     }
 
     public void Upgrade()
@@ -83,14 +92,10 @@ public class Turret : MonoBehaviour
         if(level != maxLevel && _buildSystem.playerMoney >= upgradeCost)
         {
             _buildSystem.playerMoney -= upgradeCost;
-            level++;
-            turretValue += upgradeCost;
-            damage += (damage * DAMAGE_SCALE_FACTOR);
-            fireRate += (fireRate * FIRERATE_SCALE_FACTOR);
-            range += (range * RANGE_SCALE_FACTOR);
-            rangeIndicator.transform.localScale = new Vector3(range * 2, rangeIndicator.transform.localScale.y, range * 2);
+            UpdateStats();
             UpdateUpgradeCost();
             UpdateSellCost();
+            rangeIndicator.transform.localScale = new Vector3(range * 2, rangeIndicator.transform.localScale.y, range * 2);
         }
     }
 

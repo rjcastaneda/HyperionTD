@@ -54,7 +54,6 @@ public class TurretInfoPanel : MonoBehaviour
         turretDamage.text = targetTurret.damage.ToString("F2");
         turretRange.text = targetTurret.range.ToString("F2");
         turretFireRate.text = targetTurret.fireRate.ToString("F2");
-        
         sellCost.text = "$" + targetTurret.sellCost.ToString();
     }
 

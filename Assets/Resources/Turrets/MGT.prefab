@@ -601,9 +601,9 @@ MonoBehaviour:
   targetTrans: {fileID: 0}
   enemiesInRange: []
   rangeCollider: {fileID: 0}
-  DAMAGE_SCALE_FACTOR: 0.25
+  DAMAGE_SCALE_FACTOR: 0.5
   RANGE_SCALE_FACTOR: 0.1
-  FIRERATE_SCALE_FACTOR: 0.05
+  FIRERATE_SCALE_FACTOR: 0.15
 --- !u!114 &5736544224022348584
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public float moveSpeed;
     public float scaleFactor;
+    public float moneyScaleFactor;
     public int enemyScore;
     public int bounty;
     public GameObject deathEffect;
@@ -33,8 +34,11 @@ public class Enemy : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
 
         //Difficulty is increased by increasing the health of the enemy.
-        //Health is scaled by the current wave and a specified scale factor.
-        health *= (scaleFactor * spawnSystem.currentWave);
+        //Health/Bounty is scaled by the current wave and a specified scale factor.
+        float healthScale = (health * scaleFactor);
+        health += (healthScale * spawnSystem.currentWave);
+        float bountyScale = (float)(bounty * moneyScaleFactor);
+        bounty += (int)(bountyScale * spawnSystem.currentWave);
         baseHealth = health;
     }
 
@@ -65,7 +69,7 @@ public class Enemy : MonoBehaviour
     {
         _player.score += enemyScore;
         _buildSystem.playerMoney += bounty;
-        GameObject DEffect = (GameObject)Instantiate(deathEffect, this.transform.position, this.transform.rotation);
+        GameObject DEffect = (GameObject)Instantiate(deathEffect, this.transform.position,deathEffect.transform.rotation);
         Destroy(DEffect, 1f);
         Destroy(this.gameObject); 
     }

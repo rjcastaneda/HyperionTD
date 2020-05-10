@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawnSystem : MonoBehaviour
 {
+    private Player _player;
+
     [System.Serializable]
     public class Wave
     {
@@ -22,6 +24,7 @@ public class EnemySpawnSystem : MonoBehaviour
     public bool isWaiting;
     public bool isSpawning;
     public bool waveTimer;
+    public bool tutorial;
 
     [Header("System Values")]
     public byte waveIndex;
@@ -30,8 +33,10 @@ public class EnemySpawnSystem : MonoBehaviour
     public float waveTime;
     public float checkInterval;
 
-    private void Awake()
+    private void Start()
     {
+        _player = GameObject.Find("Player").GetComponent<Player>();
+
         //Set defaults.
         waveIndex = 0;
         currentWave = 0;
@@ -45,9 +50,16 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void Update()
     {
+        if(tutorial)
+        {
+            //During tutorial we don't want enemies to spawn yet.
+            return;
+        }
+
         if(waveTimer && waveTime <= 0)
         {
             currentWave++;
+            _player.waves = currentWave;
             isSpawning = true;
             waveTimer = false;
         }
@@ -94,6 +106,12 @@ public class EnemySpawnSystem : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void StartNextWave()
+    {
+        if(tutorial) { return; }
+        waveTime = 0;
     }
 
      IEnumerator SpawnWave(Wave toSpawn)

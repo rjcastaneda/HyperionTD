@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2721071857892302712}
   - component: {fileID: 9046298688432942521}
   - component: {fileID: 8456073801743996687}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SniperBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2083728823171535296}
   - component: {fileID: 4046037631191471352}
   - component: {fileID: 891676724844708496}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

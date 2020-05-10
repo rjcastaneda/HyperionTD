@@ -15,13 +15,19 @@ public class InGameUI : MonoBehaviour
     private TextMeshProUGUI healthText;
     private TextMeshProUGUI bankText;
     private TextMeshProUGUI wavesText;
+    private TextMeshProUGUI waveTimerText;
     private TextMeshProUGUI scoreText;
+
+    [Header("Buttons")]
+    public Button spawnNextWaveButton;
 
     [Header("Texts")]
     public GameObject healthTextGO;
     public GameObject bankTextGO;
     public GameObject wavesTextGO;
     public GameObject scoreTextGO;
+    public GameObject waveTimerTextGO;
+    
 
     public void Start()
     {
@@ -34,6 +40,7 @@ public class InGameUI : MonoBehaviour
         bankText = bankTextGO.GetComponent<TextMeshProUGUI>();
         wavesText = wavesTextGO.GetComponent<TextMeshProUGUI>();
         scoreText = scoreTextGO.GetComponent<TextMeshProUGUI>();
+        waveTimerText = waveTimerTextGO.GetComponent<TextMeshProUGUI>();
     }
 
     public void Update()
@@ -61,7 +68,22 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateWaves()
     {
-        wavesText.text = "Wave: " + _enemySpawnSystem.currentWave.ToString();
+        if (_enemySpawnSystem.waveTimer != true)
+        {
+          spawnNextWaveButton.interactable = false;
+          waveTimerTextGO.SetActive(false);
+          wavesText.gameObject.SetActive(true);
+          wavesText.text = "Wave: " + _enemySpawnSystem.currentWave.ToString();
+          return;
+        }
+
+        if(_enemySpawnSystem.waveTimer == true)
+        {
+            spawnNextWaveButton.interactable = true;
+            wavesText.gameObject.SetActive(false);
+            waveTimerTextGO.SetActive(true);
+            waveTimerText.text = _enemySpawnSystem.waveTime.ToString("F0");
+        }
     }
 
     public void BuildPanelEnable()

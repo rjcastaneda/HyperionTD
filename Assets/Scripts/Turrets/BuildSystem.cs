@@ -25,6 +25,7 @@ public class BuildSystem : MonoBehaviour
         _turretInfoPanel = GameObject.Find("InGameUI").transform.Find("TurretInfoPanel").GetComponent<TurretInfoPanel>();
         machineGunTurret = Resources.Load<GameObject>("Turrets/MGT");
         sniperTurret = Resources.Load<GameObject>("Turrets/SniperTurret");
+        missileTurret = Resources.Load<GameObject>("Turrets/MissileTurret");
     }
 
     private void Update()
